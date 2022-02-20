@@ -1,7 +1,7 @@
 from django.conf import settings
 
 def user_ip_location(request):
-    result = {}
+    result = {'ip_address': '', 'region': '', 'country': ''}
     result['ip_address'] = get_client_ip(request)
     if result['ip_address'] == '127.0.0.1' and settings.DEFAULT_IP:
         result['ip_address'] = settings.DEFAULT_IP
