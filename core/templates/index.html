@@ -20,6 +20,20 @@
         <script>
             var CSRF_TOKEN = '{{ csrf_token }}';
         </script>
+
+        {% if GOOGLE_ANALYTICS_ID %}
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id={{ GOOGLE_ANALYTICS_ID }}"></script>
+        <script>
+            var GOOGLE_ANALYTICS_ID = '{{ GOOGLE_ANALYTICS_ID }}';
+
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', GOOGLE_ANALYTICS_ID);
+        </script>
+        {% endif %}
     </head>
     <body>
         <!-- Background Video-->
