@@ -28,7 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 APP_NAME = os.getenv('APP_NAME', 'My App')
-
+DEFAULT_IP = os.getenv('DEFAULT_IP')
 
 # Application definition
 
@@ -39,10 +39,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # third party
+    'rest_framework',
+    'localflavor',
+    # project
     'core.apps.CoreConfig',
 ]
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -125,3 +130,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Static files
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# GEO IP | Local setting
+GEOIP_PATH = os.path.join(BASE_DIR, 'data')

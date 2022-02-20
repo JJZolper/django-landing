@@ -32,6 +32,11 @@ async function postData() {
     referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
     body: JSON.stringify({'email': emailInput.value}) // body data type must match "Content-Type" header
   });
+
+  if(!response.ok) {
+    const message = `An error has occured: ${response.status}`;
+    throw new Error(message);
+  }
   return response.json(); // parses JSON response into native JavaScript objects
 }
 
