@@ -10,7 +10,8 @@ class HomeView(TemplateView):
         context = super(HomeView, self).get_context_data(**kwargs)
         context.update({
             'app_name': settings.APP_NAME,
-            'GOOGLE_ANALYTICS_ID': settings.GOOGLE_ANALYTICS_ID,
             'form_url': reverse('create_user')
         })
+        if not settings.DEBUG:
+            context.update({'GOOGLE_ANALYTICS_ID': settings.GOOGLE_ANALYTICS_ID})
         return context
