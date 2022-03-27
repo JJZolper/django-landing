@@ -10,6 +10,7 @@ class HomeView(TemplateView):
         context = super(HomeView, self).get_context_data(**kwargs)
         context.update({
             'app_name': settings.APP_NAME,
+            'app_description': settings.APP_DESCRIPTION,
             'form_url': reverse('create_user')
         })
         if not settings.DEBUG:

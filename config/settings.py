@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 import os
 from pathlib import Path
 
+# App Settings
+from config.app_settings import *
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -27,7 +30,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-APP_NAME = os.getenv('APP_NAME', 'My App')
 DEFAULT_IP = os.getenv('DEFAULT_IP')
 
 # Application definition
